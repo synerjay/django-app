@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Article
 from django.http import HttpResponse
-
+from django.contrib.auth.decorators import login_required
 # In order to inject the article model data into the HTML we need to import the article models
 # and then render it into the function below
 
@@ -15,6 +15,10 @@ def article_detail(request, slug):
     article = Article.objects.get(slug=slug) # goes to the models of the database to find the article with the corresponding slug
     return render(request, 'articles/article_detail.html', {'article': article}) # the article with 'quotations' is like a variable, you can call it whatever u want. With that variable we are sending in the article data
 
+# use python django decorators to protect this view. First import from django.contrib. This redirects to the login page
+@login_required(login_url="/accounts/login/")
+def article_create(request):
+    return render(request, 'articles/article_create.html')
 
 # First we make a variable equal to the Model class and grab the data by .objects.all() method. This will return a list (array)
 # then we can add another method to sort the list in an order we want .order_by() anything define 

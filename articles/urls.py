@@ -7,6 +7,7 @@ app_name = 'articles' # this is to prevent confusion for the name="list". if you
 
 urlpatterns = [
     path('', views.article_list, name="list"), # the name urls seem liek a variable that helps to simplify calling the root in another function
+    path('create/', views.article_create, name="create"), # always have custom URLs BEFORE the slug so that django wont think this url is part of the SLUG
     path('<slug:slug>/', views.article_detail, name="detail") # similar to params in node express
 ]
 
