@@ -1,0 +1,9 @@
+{% extends 'base_layout.html' %} {% block content %}
+<h1>Login</h1>
+<form action="{% url 'accounts:login' %}" class="site-form" method="post">
+  {% csrf_token %}
+  <!-- We need csrf token for security reasons like JSON web token wihout it we cannot log in -->
+  {{ form }}
+  <input type="submit" value="Login" />
+</form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base_layout.html' %}
+<!-- This is letting Django know that we need to extend the base_layout here -->
+
+<!-- Block content and endblock template tags is letting know Django this is the thing that needs to inject into base layout -->
+{% block content %}
+<h1>Article List</h1>
+<div class="articles">
+  {% for article in articles %}
+  <div class="article">
+    <h2>
+      <a href="{% url 'articles:detail' article.slug %}">{{ article.title }}</a>
+    </h2>
+    <p>{{ article.snippet }}</p>
+    <p>{{ article.date }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+<!-- In Django 3:
+{% url 'detail' article.slug %}
+No need for "slug=" -->
