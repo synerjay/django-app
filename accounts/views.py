@@ -22,7 +22,10 @@ def login_view(request): # name ur login  views with login_views
       if form.is_valid():
         user = form.get_user() # retrieve user informatio when its trying to login
         login(request, user) # logins the user
-        return redirect('articles:list')
+        if 'next' in request.POST:
+            return redirect(request.POST.get('next')) # gets the next query in the url
+        else:
+            return redirect('articles:list')
     else: 
       form = AuthenticationForm() # django-made login form
     return render(request, 'accounts/login.html', {'form': form}) # inject the form into the front end

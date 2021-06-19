@@ -16,6 +16,7 @@ def article_detail(request, slug):
     return render(request, 'articles/article_detail.html', {'article': article}) # the article with 'quotations' is like a variable, you can call it whatever u want. With that variable we are sending in the article data
 
 # use python django decorators to protect this view. First import from django.contrib. This redirects to the login page
+# this decorator indicates that article_create is a protected URl
 @login_required(login_url="/accounts/login/")
 def article_create(request):
     return render(request, 'articles/article_create.html')

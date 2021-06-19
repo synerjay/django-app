@@ -4,6 +4,10 @@
   {% csrf_token %}
   <!-- We need csrf token for security reasons like JSON web token wihout it we cannot log in -->
   {{ form }}
+  <!-- if user is logging in other than the articles list page -->
+  {% if request.GET.next %}
+  <input type="hidden" name="next" value="{{ request.GET.next}}" />
+  {% endif %}
   <input type="submit" value="Login" />
 </form>
 {% endblock %}
