@@ -27,6 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
 
+    # how to add env: https://alicecampkin.medium.com/how-to-set-up-environment-variables-in-django-f3c4db78c55f
+    # pip install django-environ to install env package
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
