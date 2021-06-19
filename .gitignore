@@ -5,6 +5,7 @@
 __pycache__
 db.sqlite3
 media
+.env
 
 # Backup files # 
 *.bak 
@@ -29,6 +30,7 @@ media
 *$py.class 
 
 # Distribution / packaging 
+env/
 .Python build/ 
 develop-eggs/ 
 dist/ 
