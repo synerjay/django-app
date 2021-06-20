@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from . import forms # import forms
 # In order to inject the article model data into the HTML we need to import the article models
 # and then render it into the function below
 
@@ -19,7 +20,14 @@ def article_detail(request, slug):
 # this decorator indicates that article_create is a protected URl
 @login_required(login_url="/accounts/login/")
 def article_create(request):
-    return render(request, 'articles/article_create.html')
+    if request.method == 'POST':
+        form = forms.CreateArticle(request.POST, request.FILES) # files are separate 
+        if form.is_valid():
+            # save article to db
+            return redirect('articles:list')
+    else: # if request is a GET request
+        form = forms.CreateArticle()
+    return render(request, 'articles/article_create.html', {'form': form})
 
 # First we make a variable equal to the Model class and grab the data by .objects.all() method. This will return a list (array)
 # then we can add another method to sort the list in an order we want .order_by() anything define 
