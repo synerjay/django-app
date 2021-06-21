@@ -18,6 +18,6 @@ class Article(models.Model):
     def snippet(self):
         return self.body[:50] + '...'
 
-# The Command Lines for Migrations
+# The Command Lines for Migrations - Whenever you make changes (add or remove) you always make migrations to the database
   # python manage.py makemigrations    <---- make a migration file
   # python manage.py migrate   <--- migrate the changes to the database

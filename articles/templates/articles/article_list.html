@@ -10,6 +10,7 @@
     <h2>
       <a href="{% url 'articles:detail' article.slug %}">{{ article.title }}</a>
     </h2>
+    <!-- Below the article.snippet is called to shorten the body. It is processed already in the models sections -->
     <p>{{ article.snippet }}</p>
     <p>{{ article.date }}</p>
   </div>
