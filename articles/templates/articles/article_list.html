@@ -13,6 +13,7 @@
     <!-- Below the article.snippet is called to shorten the body. It is processed already in the models sections -->
     <p>{{ article.snippet }}</p>
     <p>{{ article.date }}</p>
+    <p class="author">added by {{ article.author.username }}</p>
   </div>
   {% endfor %}
 </div>
