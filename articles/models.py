@@ -9,7 +9,7 @@ class Article(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True) # automatically add the date of NOW
     thumb = models.ImageField(default='default.png', blank=True) # data field for image / default image if no image / blank =True - it can be a blank field and not requried
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None) # a function for SQL where when this foreign key is deleted it will cascade down to the related table and end up deleting the corresponding keys
 
     # the function below makes the title of each instance of the article visible in the Query Article.objects.all()
     def __str__(self):
