@@ -19,13 +19,14 @@ from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
+from articles import views as article_views # we make views as articles_views so django wont get confused with the other views of the root folder
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')), # new apps need to be registered in the main app
     path('articles/', include('articles.urls')),
     path('about/', views.about),
-    path('', views.homepage)
+    path('', article_views.article_list, name="home")
 ]
 
 # Below is telling Django how we serve up the static files

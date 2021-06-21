@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls.converters import SlugConverter
+from django.contrib.auth.models import User # import user model as a foreign key in Articles model
 
 # Create your models here.
 class Article(models.Model):
@@ -8,7 +9,7 @@ class Article(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True) # automatically add the date of NOW
     thumb = models.ImageField(default='default.png', blank=True) # data field for image / default image if no image / blank =True - it can be a blank field and not requried
-    # add in author later
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     # the function below makes the title of each instance of the article visible in the Query Article.objects.all()
     def __str__(self):

@@ -24,6 +24,9 @@ def article_create(request):
         form = forms.CreateArticle(request.POST, request.FILES) # files are separate 
         if form.is_valid():
             # save article to db
+            instance = form.save(commit=False) # commit=False means before saving, we're going process the instance 
+            instance.author = request.user # associate the author with the user logged in 
+            instance.save()
             return redirect('articles:list')
     else: # if request is a GET request
         form = forms.CreateArticle()
