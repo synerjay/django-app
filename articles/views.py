@@ -32,6 +32,7 @@ def article_create(request):
         form = forms.CreateArticle()
     return render(request, 'articles/article_create.html', {'form': form})
 
+## never fucking remove the git remove function 
 # First we make a variable equal to the Model class and grab the data by .objects.all() method. This will return a list (array)
 # then we can add another method to sort the list in an order we want .order_by() anything define 
 # the render method takes in a third argument which accepts a dictionary (object) and tells which data to render. In this case the articles variable 
